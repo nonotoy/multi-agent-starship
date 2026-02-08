@@ -168,7 +168,11 @@ mkdir -p "$OUTPUT_DIR"
 ## ディレクトリ構成例
 
 ```
+<<<<<<< HEAD
 uss-enterprise/
+=======
+multi-agent-starship/
+>>>>>>> 4195577 (first commit)
   reports/
     202602091430_voynich_manuscript_research/
       final_report.md          (22KB)

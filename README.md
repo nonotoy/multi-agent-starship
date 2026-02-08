@@ -9,7 +9,11 @@
 
 # USS Enterprise
 
+<<<<<<< HEAD
 Star Trek型階層マルチエージェント調査システム。[Shogunアーキテクチャ](https://zenn.dev/shio_shoppaize/articles/5fee11d03a11a1)に基づいた論文・コード調査レビューシステム。
+=======
+Star Trek風階層マルチエージェント調査システム。[multi-agent-shogun](https://zenn.dev/shio_shoppaize/articles/5fee11d03a11a1)に基づいた論文・コード調査レビューシステム。
+>>>>>>> 4195577 (first commit)
 
 ## アーキテクチャ
 
