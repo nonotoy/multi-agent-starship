@@ -1,0 +1,27 @@
+# USS Enterprise - Git Ignore File
+
+# Mission control and status files (dynamic runtime data)
+shared/mission.yaml
+status/
+
+# Mission reports (generated output)
+reports/
+
+# Local settings (user-specific)
+.claude/settings.local.json
+
+# Claude project files
+.claude/*.jsonl
+
+# System files
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/

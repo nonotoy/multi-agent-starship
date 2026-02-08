@@ -1,0 +1,33 @@
+# USS Enterprise 設定
+
+# エージェントモデル
+models:
+  captain: sonnet
+  vulcan: sonnet
+  klingon: sonnet
+  android_1: haiku
+  android_2: haiku
+
+# 品質ループ
+quality:
+  threshold: 0.8          # 達成すべき品質閾値
+  max_iterations: 5       # 最大反復回数
+  weights:                # 評価基準の重み
+    coverage: 0.25
+    depth: 0.25
+    consistency: 0.25
+    red_team_resolved: 0.25
+
+# 収集制限
+limits:
+  papers: 50
+  references: 100
+  projects: 20
+  timeout: 300            # 秒
+
+# 出力
+output:
+  dir: reports/
+  archive: archive/
+  format: markdown
+  timestamp: true

@@ -1,0 +1,62 @@
+#!/bin/bash
+# USS Enterprise - メインエントリーポイント
+# Usage: ./enterprise [command]
+#
+# Platform: macOS, Linux, WSL
+# Requirements: tmux, claude (Claude Code CLI)
+#
+# Commands:
+#   start     - tmuxセッション起動（デフォルト）
+#   stop      - セッション停止
+#   attach    - セッションに接続
+#   status    - ステータス確認
+#   <role>    - 個別エージェント起動 (captain, vulcan, klingon, android1, android2)
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR"
+
+case "${1:-start}" in
+    start|stop|attach|status)
+        exec ./scripts/tmux-session.sh "$1"
+        ;;
+    captain|vulcan|klingon|android1|android2)
+        exec ./scripts/start-agent.sh "$1" "${2:-}"
+        ;;
+    help|-h|--help)
+        cat << 'EOF'
+ ██╗   ██╗███████╗███████╗    ███████╗███╗   ██╗████████╗███████╗██████╗ ██████╗ ██████╗ ██╗███████╗███████╗
+ ██║   ██║██╔════╝██╔════╝    ██╔════╝████╗  ██║╚══██╔══╝██╔════╝██╔══██╗██╔══██╗██╔══██╗██║██╔════╝██╔════╝
+ ██║   ██║███████╗███████╗    █████╗  ██╔██╗ ██║   ██║   █████╗  ██████╔╝██████╔╝██████╔╝██║███████╗█████╗
+ ██║   ██║╚════██║╚════██║    ██╔══╝  ██║╚██╗██║   ██║   ██╔══╝  ██╔══██╗██╔═══╝ ██╔══██╗██║╚════██║██╔══╝
+ ╚██████╔╝███████║███████║    ███████╗██║ ╚████║   ██║   ███████╗██║  ██║██║     ██║  ██║██║███████║███████╗
+  ╚═════╝ ╚══════╝╚══════╝    ╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝╚══════╝
+
+Star Trek型階層マルチエージェントシステム
+
+Usage: ./enterprise [command]
+
+Session Commands:
+  start   - tmuxセッション起動（5エージェント同時）
+  stop    - セッション停止
+  attach  - 既存セッションに接続
+  status  - ステータス確認
+
+Individual Agents:
+  captain   - 戦略的指揮
+  vulcan    - 中間管理・調査統括
+  klingon   - レッドチームレビュー
+  android1  - 一次情報収集
+  android2  - 関連情報収集
+
+Examples:
+  ./enterprise              # tmuxセッション起動
+  ./enterprise captain      # キャプテンのみ起動
+  ./enterprise android1     # Android1のみ起動（Haikuモデル）
+EOF
+        ;;
+    *)
+        echo "不明なコマンド: $1"
+        echo "ヘルプ: $0 help"
+        exit 1
+        ;;
+esac
